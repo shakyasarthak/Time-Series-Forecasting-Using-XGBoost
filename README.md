@@ -28,7 +28,10 @@ Before training the model, the data went through several preprocessing steps:
 
 1. **Data Cleaning**: Remove unwanted parameters and duplicates, and ensure data consistency.
 2. **Feature Engineering**: Create additional features from the existing data, such as day of the week, month, or any other relevant information that could improve the model's performance.
-3. **Data Splitting**: The dataset was split into training and testing sets to evaluate the model's performance.
+3. **Outlier Detection and Handling**: Two methods are employed to identify outliers in the data:
+   - **IQR Method**: Uses the Interquartile Range to identify values falling outside 1.5 × IQR from the first and third quartiles for each pollutant.
+   - **Z-score Method**: Identifies data points with Z-scores greater than 3 or less than -3, indicating values more than 3 standard deviations from the mean.
+4. **Data Splitting**: The dataset was split into training and testing sets to evaluate the model's performance.
 
 ## Visualization
 
@@ -65,19 +68,20 @@ Once the model is trained and evaluated, it is used to forecast the AQI values f
 - `sklearn`: For evaluation metrics and other machine learning utilities
 - `requests`: For API calls to OpenWeather
 - `jupyter`: For running the notebook environment
+- `scipy`: For statistical functions including Z-score calculation
 
 ## Usage
 
 To run the project, follow these steps:
 
-1. Install the required dependencies by running `pip install pandas numpy seaborn matplotlib xgboost scikit-learn requests jupyter`.
+1. Install the required dependencies by running `pip install pandas numpy seaborn matplotlib xgboost scikit-learn requests jupyter scipy`.
 2. Obtain your own OpenWeather API key and add it to the `aqi_api.py` file.
 3. Launch Jupyter Notebook by running `jupyter notebook` in your terminal.
 4. Open the project's notebook file.
 5. Execute the notebook cells sequentially to:
    - Fetch data from the OpenWeather API
    - Store the data in the datasets folder
-   - Preprocess the data
+   - Preprocess the data and handle outliers
    - Train the XGBoost MultiOutputRegressor model
    - Tune hyperparameters with GridSearchCV
    - Evaluate the model's performance
