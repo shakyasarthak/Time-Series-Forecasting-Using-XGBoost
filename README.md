@@ -19,6 +19,7 @@ This project is implemented as a Jupyter notebook with the following structure:
 - Forecasting cells
 
 Additionally, the project includes:
+
 - `aqi_api.py`: External Python file containing the OpenWeather API key configuration
 - `datasets/`: Folder containing the stored AQI data files
 
@@ -75,7 +76,7 @@ Once the model is trained and evaluated, it is used to forecast the AQI values f
 To run the project, follow these steps:
 
 1. Install the required dependencies by running `pip install pandas numpy seaborn matplotlib xgboost scikit-learn requests jupyter scipy`.
-2. Obtain your own OpenWeather API key and add it to the `aqi_api.py` file.
+2. Obtain your own OpenWeather API key, create and add the api key to the `aqi_api.py` file.
 3. Launch Jupyter Notebook by running `jupyter notebook` in your terminal.
 4. Open the project's notebook file.
 5. Execute the notebook cells sequentially to:
@@ -91,6 +92,7 @@ To run the project, follow these steps:
 ## API Configuration
 
 The project uses OpenWeather API to fetch AQI data. You will need to:
+
 1. Register at OpenWeather to obtain your own API key
 2. Insert your API key in the `aqi_api.py` file
 3. The API fetches data for all pollutants (CO, NO, NO₂, O₃, SO₂, PM2.5, PM10, NH₃)
